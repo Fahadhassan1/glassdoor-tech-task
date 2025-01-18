@@ -55,7 +55,6 @@ To run the tests, follow these steps:
 
 1. **Set up the testing environment:**
     ```bash
-    cp .env.testing.example .env.testing
     php artisan key:generate --env=testing
     ```
 
