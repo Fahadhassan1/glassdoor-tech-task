@@ -16,12 +16,12 @@ class ProductController extends Controller
        
         try {
             // Validate the request
-                $validated = $request->validate([
+            $validated = $request->validate([
                 'category' => 'nullable|string',
                 'sort' => 'nullable|string|in:asc,desc',
                 'search' => 'nullable|string',
                 'page' => 'nullable|integer|min:1'
-                ]);
+            ]);
 
             $category = $request->input('category');
             $sort = $request->input('sort', 'asc');
@@ -29,11 +29,13 @@ class ProductController extends Controller
 
             $query = Product::query();
 
+            // Prepare the query
+        
             if ($category) {
             $query->where('category', $category);
             }
 
-            // search like name
+            // search  name
             if ($search) {
             $query->where('name', 'like', '%' . $search . '%');
             }
